@@ -1,7 +1,22 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+        "storagesku": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowableValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_RAGRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+            ],
+            "metadata": {
+                "description": "type of sku for storage account"
+            }
+        }
+    },
     "variables": {},
     "resources": [
         {
@@ -10,7 +25,7 @@
             "name": "storagedemo102030",
             "location": "centralus",
             "sku": {
-                "name": "Standard_LRS"
+                "name": "[parameters('storagesku')]"
             },
             "kind": "StorageV2",
             "properties": {
