@@ -17,12 +17,14 @@
             }
         }
     },
-    "variables": {},
+    "variables": {
+        "resourcename": "storagedemo112233"
+    },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-05-01",
-            "name": "storagedemo102030",
+            "name": "[variables('resourcename')]",
             "location": "centralus",
             "sku": {
                 "name": "[parameters('storagesku')]"
